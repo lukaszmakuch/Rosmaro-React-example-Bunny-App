@@ -1,0 +1,160 @@
+{
+  "IsABunnyOwner": {
+    "type": "leaf"
+  },
+  "EnteringTheName": {
+    "type": "leaf"
+  },
+  "AHungryBunny": {
+    "type": "leaf"
+  },
+  "AnEatingBunny": {
+    "type": "leaf"
+  },
+  "AFullBunny": {
+    "type": "leaf"
+  },
+  "TheBunny": {
+    "type": "graph",
+    "nodes": {
+      "AHungryBunny": "AHungryBunny",
+      "AnEatingBunny": "AnEatingBunny",
+      "AFullBunny": "AFullBunny"
+    },
+    "arrows": {
+      "AHungryBunny": {
+        "ate a carrot": {
+          "target": "AnEatingBunny",
+          "entryPoint": "start"
+        }
+      },
+      "AnEatingBunny": {
+        "ate 5 carrots": {
+          "target": "AFullBunny",
+          "entryPoint": "start"
+        },
+        "ate a carrot": {
+          "target": "AnEatingBunny",
+          "entryPoint": "start"
+        }
+      }
+    },
+    "entryPoints": {
+      "start": {
+        "target": "AHungryBunny",
+        "entryPoint": "start"
+      },
+      "feeding": {
+        "target": "AHungryBunny",
+        "entryPoint": "start"
+      }
+    }
+  },
+  "LookingForACarrot": {
+    "type": "leaf"
+  },
+  "GivingTheCarrot": {
+    "type": "leaf"
+  },
+  "CarrotControls": {
+    "type": "graph",
+    "nodes": {
+      "LookingForACarrot": "LookingForACarrot",
+      "GivingTheCarrot": "GivingTheCarrot"
+    },
+    "arrows": {
+      "LookingForACarrot": {
+        "found a carrot": {
+          "target": "GivingTheCarrot",
+          "entryPoint": "start"
+        }
+      },
+      "GivingTheCarrot": {
+        "gave the carrot": {
+          "target": "LookingForACarrot",
+          "entryPoint": "start"
+        }
+      }
+    },
+    "entryPoints": {
+      "start": {
+        "target": "LookingForACarrot",
+        "entryPoint": "start"
+      },
+      "feeding": {
+        "target": "recent",
+        "entryPoint": "start"
+      }
+    }
+  },
+  "FeedingTheBunny": {
+    "type": "composite",
+    "nodes": {
+      "TheBunny": "TheBunny",
+      "CarrotControls": "CarrotControls"
+    }
+  },
+  "Thanks": {
+    "type": "leaf"
+  },
+  "main": {
+    "type": "graph",
+    "nodes": {
+      "IsABunnyOwner": "IsABunnyOwner",
+      "EnteringTheName #1": "EnteringTheName",
+      "EnteringTheName #2": "EnteringTheName",
+      "FeedingTheBunny": "FeedingTheBunny",
+      "Thanks": "Thanks"
+    },
+    "arrows": {
+      "IsABunnyOwner": {
+        "has a bunny": {
+          "target": "EnteringTheName #1",
+          "entryPoint": "start"
+        },
+        "has no bunny": {
+          "target": "EnteringTheName #2",
+          "entryPoint": "start"
+        }
+      },
+      "FeedingTheBunny": {
+        "fed the bunny": {
+          "target": "Thanks",
+          "entryPoint": "start"
+        }
+      },
+      "EnteringTheName #2": {
+        "done": {
+          "target": "Thanks",
+          "entryPoint": "start"
+        },
+        "typed": {
+          "target": "EnteringTheName #2",
+          "entryPoint": "start"
+        }
+      },
+      "EnteringTheName #1": {
+        "done": {
+          "target": "FeedingTheBunny",
+          "entryPoint": "feeding"
+        },
+        "typed": {
+          "target": "EnteringTheName #1",
+          "entryPoint": "start"
+        }
+      },
+      "Thanks": {
+        "repeated": {
+          "target": "IsABunnyOwner",
+          "entryPoint": "start"
+        }
+      }
+    },
+    "entryPoints": {
+      "start": {
+        "target": "IsABunnyOwner",
+        "entryPoint": "start"
+      }
+    }
+  }
+}
