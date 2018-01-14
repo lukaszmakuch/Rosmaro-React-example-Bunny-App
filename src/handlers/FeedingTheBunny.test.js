@@ -7,8 +7,10 @@ describe('FeedingTheBunny', () => {
 
   it('renders the bunny and carrot controls', () => {
     const wrapper = shallow(FeedingTheBunny.afterRender({
-      TheBunny: <span id="the-bunny" />,
-      CarrotControls: <span id="carrot-controls" />,
+      res: {
+        TheBunny: <span id="the-bunny" />,
+        CarrotControls: <span id="carrot-controls" />,
+      }
     }));
     expect(wrapper.find('#the-bunny').length).toEqual(1);
     expect(wrapper.find('#carrot-controls').length).toEqual(1);
