@@ -8,7 +8,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17",
+    "react-scripts": "1.1.4",
     "rosmaro": "^0.7.0",
     "rosmaro-in-memory-storage": "^1.2.0",
     "rosmaro-process-wide-lock": "^1.2.0",
