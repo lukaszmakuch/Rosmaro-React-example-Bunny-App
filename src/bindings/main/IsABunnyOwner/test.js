@@ -23,10 +23,10 @@ describe('IsABunnyOwner', () => {
   });
 
   it('dispatches HAS_A_BUNNY when "Yes, I have a bunny!" is clicked', () => {
-      wrapper
-        .find('input[value="Yes, I have a bunny!"]')
-        .simulate('click');
-      expect(store.getActions()).toEqual([{type: 'HAS_A_BUNNY'}]);
+    wrapper
+      .find('input[value="Yes, I have a bunny!"]')
+      .simulate('click');
+    expect(store.getActions()).toEqual([{type: 'HAS_A_BUNNY'}]);
   });
 
   it('dispatches HAS_NO_BUNNY when "No, I don\'t have a bunny." is clicked', () => {
