@@ -15,6 +15,8 @@
     "redux-saga": "^0.16.0",
     "rosmaro": "^0.8.1",
     "rosmaro-binding-utils": "0.0.3",
+    "rosmaro-react": "0.0.6",
+    "rosmaro-redux": "0.0.2",
     "sinon": "^4.1.5"
   },
   "scripts": {

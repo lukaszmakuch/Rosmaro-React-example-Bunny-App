@@ -2,9 +2,6 @@
   "IsABunnyOwner": {
     "type": "leaf"
   },
-  "EnteringTheName": {
-    "type": "leaf"
-  },
   "AHungryBunny": {
     "type": "leaf"
   },
@@ -156,5 +153,32 @@
         "entryPoint": "start"
       }
     }
+  },
+  "EnteringTheName": {
+    "type": "graph",
+    "nodes": {
+      "Accepting": "AcceptingTheName",
+      "Writing": "WritingTheName"
+    },
+    "arrows": {
+      "Writing": {
+        "wrote": {
+          "target": "Accepting",
+          "entryPoint": "start"
+        }
+      }
+    },
+    "entryPoints": {
+      "start": {
+        "target": "Writing",
+        "entryPoint": "start"
+      }
+    }
+  },
+  "AcceptingTheName": {
+    "type": "leaf"
+  },
+  "WritingTheName": {
+    "type": "leaf"
   }
 }

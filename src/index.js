@@ -2,61 +2,43 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import rosmaro from 'rosmaro';
-import { Provider, connect } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import {Provider} from 'react-redux'
+import {createStore, applyMiddleware} from 'redux'
 import graph from './graph.json'
-import makeBindings from './bindings/all';
+import makeBindings from './bindings/index';
+import * as bindingUtils from './bindings/utils';
 import registerServiceWorker from './registerServiceWorker';
 import createSagaMiddleware from 'redux-saga';
 import mySaga from './sagas'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {makeReducer, effectDispatcher} from 'rosmaro-redux';
+import rosmaroComponent from 'rosmaro-react';
 
-const appModel = rosmaro({
+const model = rosmaro({
   graph, 
-  bindings: makeBindings({
-  })
+  bindings: makeBindings({utils: bindingUtils})
 });
 
-const rootReducer = (stateAndEffect = {state: undefined, effect: undefined}, action) => {
-  if (action.type === 'EFFECT') {
-      return {state: stateAndEffect.state, effect: undefined};
-  }
+const rootReducer = makeReducer(model);
 
-  const {state: newState, result: {effect}} = appModel({state: stateAndEffect.state, action});
-  return {state: newState, effect};
-};
+const sagaMiddleware = createSagaMiddleware();
 
-const sagaMiddleware = createSagaMiddleware({
-  emitter: emit => action => {
-   if (action.type === 'EFFECT') emit(action.effect);
-  }
-})
-
-const effectDispatcher = store => next => action => {
-  next(action);
-  const {effect} = store.getState();
-  if (effect) store.dispatch({type: 'EFFECT', effect});
-};
-
-const composeEnhancers = composeWithDevTools({});
-
-let store = createStore(
+const store = createStore(
   rootReducer,
-  composeEnhancers(
+  composeWithDevTools({})(
     applyMiddleware(effectDispatcher, sagaMiddleware)
   )
 );
 sagaMiddleware.run(mySaga);
 
-const App = (state) => appModel({state, action: ({type: 'RENDER'})}).result.data;
-
-const ConnectedApp = connect(
-  ({state}) => state,
-)(App);
+const App = rosmaroComponent({
+  model,
+  selector: state => state
+});
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedApp />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

@@ -1,17 +1,13 @@
 import {
   callChildren,
-  mergeContexts,
-  mergeArrows,
   initialValueLens as initialContextLens,
-  sliceLens,
-  extendArrows,
-  // transparentLens,
   typeHandler,
   defaultHandler,
   partialReturns,
+  sliceLens
 } from 'rosmaro-binding-utils';
 
-export {mergeContexts, mergeArrows, sliceLens, extendArrows, callChildren, defaultHandler};
+export {sliceLens, callChildren, defaultHandler};
 
 export {initialContextLens};
 
