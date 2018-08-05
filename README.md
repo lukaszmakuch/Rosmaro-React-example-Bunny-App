@@ -14,6 +14,10 @@ __Redux-Saga__ handles declarative side effects.
 
 [Rosmaro-Redux](https://github.com/lukaszmakuch/rosmaro-redux) was used to integrate Redux with Rosmaro.
 
+[Rosmaro-Tools](https://github.com/lukaszmakuch/rosmaro-tools) helped to generate bindings based on the directory structure.
+
+[Rosmaro-Binding-Utils](https://github.com/lukaszmakuch/rosmaro-binding-utils) made it easy to write bindings.
+
 [Create React App](https://github.com/facebookincubator/create-react-app) was used to bootstrap this demo.
 
 There is just __1 IF__ responsible for the logic:
