@@ -1,9 +1,9 @@
-import { delay } from 'redux-saga'
-import { put, takeEvery, all } from 'redux-saga/effects'
+import {delay} from 'redux-saga'
+import {put, takeEvery, all} from 'redux-saga/effects'
 
-function* checkName() {
+function* checkName({name}) {
   yield delay(1000)
-  yield put({ type: 'NAME_ACCEPTED' })
+  yield put({type: 'NAME_ACCEPTED', name})
 };
 
 function* watchDelayedNameVerification() {
