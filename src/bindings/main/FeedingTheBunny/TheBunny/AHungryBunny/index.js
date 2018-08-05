@@ -1,4 +1,5 @@
 import React from 'react';
+import {makeHandler} from './../../../../utils';
 
 const View = () => 
   <p>
@@ -6,7 +7,7 @@ const View = () =>
     This is a hungry bunny.
   </p>;
 
-export default ({utils: {makeHandler}}) => ({
+export default () => ({
 
   handler: makeHandler({
 

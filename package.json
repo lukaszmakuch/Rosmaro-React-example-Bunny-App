@@ -16,8 +16,7 @@
     "rosmaro": "^0.8.1",
     "rosmaro-binding-utils": "0.0.3",
     "rosmaro-react": "0.0.6",
-    "rosmaro-redux": "0.0.2",
-    "sinon": "^4.1.5"
+    "rosmaro-redux": "0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,5 +24,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "redux-mock-store": "^1.5.3"
+  }
 }

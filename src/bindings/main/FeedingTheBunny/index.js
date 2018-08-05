@@ -1,4 +1,5 @@
 import React from 'react';
+import {makeHandler, callChildren} from './../../utils';
 
 const View = ({theBunny, carrotControls}) => 
   <div>
@@ -7,7 +8,7 @@ const View = ({theBunny, carrotControls}) =>
     {carrotControls}
   </div>;
 
-export default ({utils: {makeHandler, callChildren}}) => ({
+export default () => ({
 
   handler: makeHandler({
 

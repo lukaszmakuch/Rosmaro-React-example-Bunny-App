@@ -1,5 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+import {makeHandler} from './../../utils';
 
 const View = connect()(({name, dispatch}) => 
   <div>
@@ -12,7 +13,7 @@ const View = connect()(({name, dispatch}) =>
   </div>
 );
 
-export default ({utils: {makeHandler}}) => ({
+export default () => ({
 
   handler: makeHandler({
 
