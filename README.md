@@ -26,3 +26,6 @@ const arrow = ateCarrots >= 5
   ? 'ate 5 carrots' 
   : 'ate a carrot';
 ```
+
+The rest of the logic looks like this (in the [Rosmaro visual editor](https://rosmaro.js.org/editor)):
+![The bunny app opened in the Rosmaro visual editor](https://lukaszmakuch.pl/static/editor_entry_point_of_main-8f72254778245a0e1e6cf45d0c4e689e-c83b2.png)
